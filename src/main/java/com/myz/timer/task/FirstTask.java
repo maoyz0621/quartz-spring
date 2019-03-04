@@ -21,7 +21,7 @@ public class FirstTask {
     /**
      * 使用ThreadLocal实现函数式编程
      */
-    private static final ThreadLocal<DateFormat> DATE_FORMAT = ThreadLocal.withInitial(() -> new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
+    private static final ThreadLocal<DateFormat> DATE_FORMAT = ThreadLocal.withInitial(() -> new SimpleDateFormat("yyyy-MM-dd HH:mm:ss SSS"));
 
     public void task() {
         System.out.println("执行FirstTask..." + DATE_FORMAT.get().format(new Date()));

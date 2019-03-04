@@ -3,10 +3,14 @@
  **/
 package com.myz.timer.async;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Component;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
@@ -19,13 +23,18 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class AsyncTask {
 
+    protected final Logger logger = LoggerFactory.getLogger(getClass());
+
+    private static final ThreadLocal<DateFormat> DATE_FORMAT = ThreadLocal.withInitial(() -> new SimpleDateFormat("yyyy-MM-dd HH:mm:ss SSS"));
+
+
     /**
      * 无返回值
      */
     @Async
     public void task1() throws InterruptedException {
         TimeUnit.SECONDS.sleep(5);
-        System.out.println("执行无返回值异步任务");
+        logger.debug("执行无返回值异步任务");
     }
 
     /**

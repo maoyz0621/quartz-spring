@@ -16,7 +16,7 @@ import java.util.Date;
  */
 public abstract class BaseJob implements Job {
 
-    protected final String date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+    protected final String date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss SSS").format(System.currentTimeMillis());
 
     protected final Logger logger = LoggerFactory.getLogger(getClass());
 }

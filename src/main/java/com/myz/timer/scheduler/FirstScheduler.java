@@ -32,13 +32,13 @@ public class FirstScheduler {
         // 4 注册任务和触发器
         Date date = scheduler.scheduleJob(jobDetail, trigger);
         logger.debug("当前时间 = {}， 最近将要执行任务的时间 date = {}",
-                new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()),
-                new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date));
+                new SimpleDateFormat("yyyy-MM-dd HH:mm:ss SSS").format(new Date()),
+                new SimpleDateFormat("yyyy-MM-dd HH:mm:ss SSS").format(date));
 
         // 5 启动服务
         scheduler.start();
 
-        logger.debug("服务开启时间: {}", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+        logger.debug("服务开启时间: {}", new SimpleDateFormat("yyyy-MM-dd HH:mm: SSS").format(new Date()));
 
         // 服务挂起
         // scheduler.standby();
