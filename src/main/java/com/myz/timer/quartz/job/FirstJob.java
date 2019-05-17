@@ -1,12 +1,11 @@
 /**
  * Copyright 2018 asiainfo Inc.
  **/
-package com.myz.timer.job;
+package com.myz.timer.quartz.job;
 
 import org.quartz.*;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * 定义要执行的任务

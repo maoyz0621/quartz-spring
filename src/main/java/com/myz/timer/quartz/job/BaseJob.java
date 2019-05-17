@@ -1,14 +1,13 @@
 /**
  * Copyright 2018 asiainfo Inc.
  **/
-package com.myz.timer.job;
+package com.myz.timer.quartz.job;
 
 import org.quartz.Job;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * @author maoyz on 2018/8/5

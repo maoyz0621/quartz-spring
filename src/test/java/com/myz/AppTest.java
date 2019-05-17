@@ -1,7 +1,7 @@
 package com.myz;
 
 
-import com.myz.timer.async.AsyncTask;
+import com.myz.timer.springTask.async.AsyncTask;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

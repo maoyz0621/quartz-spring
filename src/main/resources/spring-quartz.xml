@@ -12,7 +12,7 @@
     <bean id="firstJobDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
         <property name="group" value="first_job"/>
         <property name="name" value="firstJob"/>
-        <property name="jobClass" value="com.myz.timer.job.MyDetailQuartzJobBean"/>
+        <property name="jobClass" value="com.myz.timer.spring.MyDetailQuartzJobBean"/>
         <property name="jobDataAsMap">
             <map>
                 <entry key="targetObject" value="firstTask"/>
@@ -45,7 +45,7 @@
     </bean>
 
     <!-- 4.定时任务管理器 -->
-    <bean id="quartzManager" class="com.myz.timer.manager.QuartzManager">
+    <bean id="quartzManager" class="com.myz.timer.spring.manager.QuartzManager">
         <property name="scheduler" ref="scheduler"/>
     </bean>
 </beans>

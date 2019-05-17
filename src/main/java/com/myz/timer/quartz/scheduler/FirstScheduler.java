@@ -1,10 +1,10 @@
 /**
  * Copyright 2018 asiainfo Inc.
  **/
-package com.myz.timer.scheduler;
+package com.myz.timer.quartz.scheduler;
 
-import com.myz.timer.jobdetail.FirstJobDetail;
-import com.myz.timer.trigger.FirstTrigger;
+import com.myz.timer.quartz.jobdetail.FirstJobDetail;
+import com.myz.timer.quartz.trigger.FirstTrigger;
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
 import org.slf4j.Logger;
@@ -18,6 +18,7 @@ import java.util.Date;
  * @version: v1.0
  */
 public class FirstScheduler {
+
     protected static final Logger logger = LoggerFactory.getLogger(FirstScheduler.class);
 
     /**

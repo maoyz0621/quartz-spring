@@ -1,7 +1,7 @@
 /**
  * Copyright 2018 asiainfo Inc.
  **/
-package com.myz.timer.job;
+package com.myz.timer.spring;
 
 import org.quartz.JobDetail;
 import org.quartz.JobExecutionContext;
@@ -29,7 +29,7 @@ public class MyDetailQuartzJobBean extends QuartzJobBean {
 
     @Override
     protected void executeInternal(JobExecutionContext context) throws JobExecutionException {
-        logger.debug("======== 开始执行JobDetail =========");
+        logger.debug("============================ 开始执行JobDetail ===========================");
 
         descript(context);
 

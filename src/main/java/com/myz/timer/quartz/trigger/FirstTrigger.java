@@ -1,7 +1,7 @@
 /**
  * Copyright 2018 asiainfo Inc.
  **/
-package com.myz.timer.trigger;
+package com.myz.timer.quartz.trigger;
 
 import org.quartz.*;
 

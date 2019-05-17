@@ -1,7 +1,7 @@
 /**
  * Copyright 2018 asiainfo Inc.
  **/
-package com.myz.timer.async;
+package com.myz.timer.springTask.async;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

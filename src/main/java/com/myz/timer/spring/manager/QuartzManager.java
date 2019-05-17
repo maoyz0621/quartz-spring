@@ -1,7 +1,7 @@
 /**
  * Copyright 2018 asiainfo Inc.
  **/
-package com.myz.timer.manager;
+package com.myz.timer.spring.manager;
 
 import org.quartz.*;
 
@@ -10,6 +10,7 @@ import org.quartz.*;
  * @version: v1.0
  */
 public class QuartzManager {
+
     private Scheduler scheduler;
 
     /**

@@ -1,9 +1,9 @@
 /**
  * Copyright 2018 asiainfo Inc.
  **/
-package com.myz.timer.scheduler;
+package com.myz.timer.spring;
 
-import com.myz.timer.manager.QuartzManager;
+import com.myz.timer.spring.manager.QuartzManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;

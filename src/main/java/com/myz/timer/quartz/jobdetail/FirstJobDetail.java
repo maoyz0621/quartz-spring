@@ -1,9 +1,9 @@
 /**
  * Copyright 2018 asiainfo Inc.
  **/
-package com.myz.timer.jobdetail;
+package com.myz.timer.quartz.jobdetail;
 
-import com.myz.timer.job.FirstJob;
+import com.myz.timer.quartz.job.FirstJob;
 import org.quartz.JobBuilder;
 import org.quartz.JobDataMap;
 import org.quartz.JobDetail;

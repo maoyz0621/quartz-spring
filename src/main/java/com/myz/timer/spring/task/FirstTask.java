@@ -1,7 +1,7 @@
 /**
  * Copyright 2018 asiainfo Inc.
  **/
-package com.myz.timer.task;
+package com.myz.timer.spring.task;
 
 import org.springframework.stereotype.Component;
 
