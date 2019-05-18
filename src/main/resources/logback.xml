@@ -113,9 +113,10 @@
     </appender>
 
     <logger name="org.springframework" level="info"/>
+    <logger name="org.quartz" level="info"/>
 
     <!-- 业务日志 -->
-    <logger name="com.myz" level="DEBUG" additivity="false">
+    <logger name="com.myz" level="info" additivity="false">
         <appender-ref ref="STDOUT"/>
     </logger>
 

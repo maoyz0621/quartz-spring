@@ -10,18 +10,18 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 
 /**
- * 任务类1
+ * 任务类2
  *
  * @author maoyz on 2018/8/7
  * @version: v1.0
  */
 @Component
-public class FirstTask extends BaseTask {
+public class SecondTask extends BaseTask {
 
-    private static final Logger logger = LoggerFactory.getLogger(FirstTask.class);
+    private static final Logger logger = LoggerFactory.getLogger(SecondTask.class);
 
     public void task() {
-        logger.info("****************** 执行FirstTask Start, {} *************************", DATE_FORMAT.get().format(new Date()));
+        logger.info("****************** 执行SecondTask Start, {}*************************", DATE_FORMAT.get().format(new Date()));
         executorService.execute(() -> {
             // 模拟业务延时
             try {
@@ -30,7 +30,8 @@ public class FirstTask extends BaseTask {
                 e.printStackTrace();
                 throw new RuntimeException();
             }
-            logger.info("****************** 执行FirstTask End, {} *************************", DATE_FORMAT.get().format(new Date()));
+            logger.info("****************** 执行SecondTask End, {}*************************", DATE_FORMAT.get().format(new Date()));
         });
+
     }
 }

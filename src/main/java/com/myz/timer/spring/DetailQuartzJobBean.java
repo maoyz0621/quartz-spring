@@ -3,10 +3,7 @@
  **/
 package com.myz.timer.spring;
 
-import org.quartz.JobDetail;
-import org.quartz.JobExecutionContext;
-import org.quartz.JobExecutionException;
-import org.quartz.Trigger;
+import org.quartz.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
@@ -14,14 +11,16 @@ import org.springframework.scheduling.quartz.QuartzJobBean;
 
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
+import java.util.Objects;
 
 /**
  * @author maoyz on 2018/8/7
  * @version: v1.0
  */
-public class MyDetailQuartzJobBean extends QuartzJobBean {
+@DisallowConcurrentExecution
+public class DetailQuartzJobBean extends QuartzJobBean {
 
-    private Logger logger = LoggerFactory.getLogger(getClass());
+    private static final Logger logger = LoggerFactory.getLogger(DetailQuartzJobBean.class);
 
     private String targetObject;
     private String targetMethod;
@@ -31,14 +30,13 @@ public class MyDetailQuartzJobBean extends QuartzJobBean {
     protected void executeInternal(JobExecutionContext context) throws JobExecutionException {
         logger.debug("============================ 开始执行JobDetail ===========================");
 
-        descript(context);
-
         // 通过application获取上下文
         Object bean = applicationContext.getBean(targetObject);
         Method method = null;
         try {
             // 获取指定方法
             method = bean.getClass().getMethod(targetMethod, new Class[]{});
+            descript(context, bean, method);
             // 执行方法(当前对象,参数)
             method.invoke(bean, new Object[]{});
         } catch (NoSuchMethodException e) {
@@ -53,22 +51,26 @@ public class MyDetailQuartzJobBean extends QuartzJobBean {
      *
      * @param context
      */
-    private void descript(JobExecutionContext context) {
-        JobDetail jobDetail = context.getJobDetail();
-        logger.debug("FirstJob ... {}:" + jobDetail.getKey().getGroup() + ":"
-                + jobDetail.getKey().getName() + ":"
-                + jobDetail.getDescription() + ":"
-                + jobDetail.getJobClass() + ":"
-                + jobDetail.getJobDataMap() + "-->");
+    private void descript(JobExecutionContext context, Object bean, Method method) {
+        Objects.requireNonNull(bean, "************** Bean can not be null ******************");
+        Objects.requireNonNull(method, "************** Method can not be null ******************");
+        Objects.requireNonNull(context, "************** JobExecutionContext can not be null ******************");
 
+        JobDetail jobDetail = context.getJobDetail();
         Trigger trigger = context.getTrigger();
-        logger.debug("FirstTrigger ... {}:" + trigger.getKey().getGroup() + ":"
-                + trigger.getKey().getName() + ":"
-                + trigger.getDescription() + ":"
-                + trigger.getCalendarName() + ":"
-                + trigger.getJobDataMap() + "-->"
-                + "定时任务开始时间:"
-                + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(trigger.getStartTime()));
+        logger.info("================== {}, JobMethod = {}, JobGroup = {}, JobKey = {}, JObDescription = {}, jobDataMap = {}\n " +
+                        "TriggerGroup = {}, TriggerKey = {}, TriggerDescription = {}, TriggerJobDataMap = {}, 定时任务开始时间 = {} ======================",
+                bean.getClass().getName(),
+                method.getName(),
+                jobDetail.getKey().getGroup(),
+                jobDetail.getKey().getName(),
+                jobDetail.getDescription(),
+                jobDetail.getJobDataMap(),
+                trigger.getKey().getGroup(),
+                trigger.getKey().getName(),
+                trigger.getDescription(),
+                trigger.getJobDataMap(),
+                new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(trigger.getStartTime()));
     }
 
     public void setTargetObject(String targetObject) {

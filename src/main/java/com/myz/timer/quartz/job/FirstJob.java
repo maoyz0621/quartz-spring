@@ -13,6 +13,7 @@ import java.text.SimpleDateFormat;
  * @author maoyz on 2018/8/5
  * @version: v1.0
  */
+@DisallowConcurrentExecution
 public class FirstJob extends BaseJob {
 
     /**
